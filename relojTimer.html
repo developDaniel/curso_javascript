@@ -1,0 +1,32 @@
+<hmtl5>
+    <br>
+    <div class="reloj">
+         10:15:20
+    </div>
+
+    <style>
+        .reloj{
+            color: black;
+            font-size: 5em;
+        }
+
+    </style>
+
+    <script>
+        setInterval(() => {
+        var reloj = document.getElementsByClassName("reloj")[0];
+        var tiempoactual = new Date();
+        var hora = tiempoactual.getHours();
+        var minutos = tiempoactual.getMinutes();
+        var segundos = tiempoactual.getSeconds();
+
+        if (segundos < 10){
+            segundos = '0' + `${segundos}`;
+        }
+
+        reloj.innerHTML = `${hora}:${minutos}:${segundos}`;
+        
+        
+        }, 1000);
+    </script>
+</hmtl5>
