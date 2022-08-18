@@ -1,0 +1,66 @@
+<html>
+
+
+    <label>nombre</label><input type="text" id="txtNombre"/><br/>
+    <label>apellido</label><input type="text" id="txtApellido" /><br/>
+    <label>telefono</label><input type="text" id="txtTelefono" /><br/>
+    <label>email</label><input type="text" id="txtEmail" /><br/><br/>
+    <button id="btnAgregar">Agregar</button><br/><br/>
+
+    <div id="listarPersonas" >
+
+    </div>
+
+
+    <script>
+        window.onload = iniciar;
+        var personas = [];
+
+        function iniciar(){
+            var btnagregar = document.getElementById("btnAgregar");
+            btnagregar.addEventListener("click",clickbtnAgregar);
+        }
+
+        function clickbtnAgregar(){
+             var txtnombre = document.getElementById("txtNombre").value;
+             var txtapellido = document.getElementById("txtApellido").value;
+             var txttelefono = document.getElementById("txtTelefono").value;
+             var txtemail = document.getElementById("txtEmail").value;
+            
+            var persona = {
+                "nombre" : txtnombre,
+                "apellido" : txtapellido,
+                "telefono" : txttelefono,
+                "emanil" : txtemail,
+                "direccion" : "cono sur asoc. claveles",
+                "empleo" : {
+                    "nombre" : "programador",
+                    "localidad" : "españa"
+                }
+            }
+            
+            personas.push(persona);
+            mostrarpersonas();
+            // //console.log(persona);
+            //alert(txtnombre);
+            //alert("prueba");
+
+
+        }
+
+        function mostrarpersonas(){
+            var listarPersonas = document.getElementById("listarPersonas");
+            var html = "";
+
+            for(var persona of personas){
+                html += persona.nombre + persona.apellido + persona.telefono + persona.emanil + '<br>';
+            }
+
+            listarPersonas.innerHTML = html;
+        }
+
+
+        
+    </script>
+
+</html>
