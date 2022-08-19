@@ -4,13 +4,16 @@
 
     <script>
 
-        function cargarJson(){
-            fetch('https://jsonplaceholder.typicode.com/todos/1')
-            .then(response => response.json())
-            .then(jsonCargado);        
-        }
+        async function cargarUrl(url){
+            let respuesta = await fetch(url);
+            return respuesta.json();            
+       }
         
-        function jsonCargado(json){
+        async function cargarJson(){
+            
+            //let usuariosJson = await cargarUrl('https://jsonplaceholder.typicode.com/usuarios');
+            let json = await cargarUrl('https://jsonplaceholder.typicode.com/todos/1');
+
             let nombrepost = document.getElementById("txtNombrePost");
             nombrepost.innerHTML = json.title;
 

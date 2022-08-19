@@ -1,0 +1,52 @@
+<html5>
+    <h>Nombre del Post</h> <span id="txtNombrePost"></span><bR/><bR/>
+    <b>¿Esta completo?</b> <span id="txtCompleto"></span>
+
+    <script>
+
+        function cargarJson(){
+            // fetch('https://jsonplaceholder.typicode.com/todos/1')
+            // .then(response => response.json())
+            // .then(jsonCargado);        
+
+            //promesa es un proceso pesado que puede durar algun tiempo en responder
+            let promesa = new Promise(resolver => {
+                setTimeout(() => {                                    
+                    let json = {
+                    "userId" : 1,
+                    "id" : 1,
+                    "Title" : "delete aut autors",
+                    "completed": false
+                    }
+                    resolver(json);
+                }, 3000);
+             });
+            
+            promesa.then(json => { ///con el .then decimos que es lo que sucede cuando se cumple la promesa
+                jsonCargado(json);
+            });
+
+
+            
+        }
+        
+        function jsonCargado(json){
+            let nombrepost = document.getElementById("txtNombrePost");
+            nombrepost.innerHTML = json.title;
+
+            let completo = document.getElementById("txtCompleto");
+            if (json.completed){
+                completo.innerHTML = "Esta completo";
+            }else{
+                completo.innerHTML = "Esta Incompleto";
+            }
+            
+
+            console.log(json);
+
+        }
+
+        cargarJson();
+
+    </script>
+</html5>
